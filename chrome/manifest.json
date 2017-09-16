@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+  "name": "playlist-sync",
+  "version": "0.0.1",
+  "description": "歌单同步",
+  "content_scripts": [
+    {
+      "matches": ["*://music.163.com/*"],
+      "js": ["./static/js/manifest.js", "./static/js/vendor.js", "./static/js/163.js"]
+    }
+  ],
+  "icons": {
+    "16": "static/img/icon16.png",
+    "48": "static/img/icon48.png",
+    "128": "static/img/icon128.png"
+  },
+  "background": {
+    "scripts": ["./static/js/manifest.js","./static/js/vendor.js","./static/js/background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "static/img/icon19.png",
+      "38": "static/img/icon38.png"
+    },
+    "default_title": "playlist-sync",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "cookies",
+    "tabs",
+    "proxy",
+    "notifications",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "contextMenus",
+    "<all_urls>"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://localhost/*",
+
+    ]
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

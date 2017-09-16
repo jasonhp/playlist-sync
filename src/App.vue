@@ -1,9 +1,35 @@
 <template>
   <div id="app">
-    <!-- main view -->
-
+    <transition name="app-transition" mode="out-in">
+      <keep-alive>
+        <router-view
+          class="app-view">
+        </router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
+
+<script>
+  import Constants from './constants'
+
+  export default {
+    data() {
+      return {
+
+      }
+    },
+    components: {
+
+    },
+    mounted() {
+
+    },
+    methods: {
+
+    }
+  }
+</script>
 
 <style lang="scss" type="text/scss">
   @import "assets/css/base";
@@ -31,26 +57,20 @@
   #app::-webkit-scrollbar-thumb {
     background-color: #1e7be2;
   }
-</style>
 
-<script>
-  import Constants from './constants'
-  import util from './util'
-
-  export default {
-    data() {
-      return {
-
-      }
-    },
-    watch: {
-
-    },
-    mounted: function(){
-
-    },
-    methods: {
-
-    }
+  .app-view{
+    transition: all .1s linear;
   }
-</script>
+  .app-transition-enter, .app-transition-leave-active{
+    opacity: 0;
+    transform: translate3d(100px,0,0);
+  }
+  .app-transition-enter.main-page, .app-transition-leave-active.main-page{
+    opacity: 0.5;
+    transform: translate3d(0,0,-20px);
+  }
+  .app-transition-enter.features-page, .app-transition-leave-active.features-page{
+    opacity: 0;
+    transform: translate3d(0,0,0);
+  }
+</style>

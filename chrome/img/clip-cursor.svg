@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>光标</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="25" cy="25" r="10"></circle>
+    </defs>
+    <g id="微信编辑器－样式" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="采集样式‘" transform="translate(-1086.000000, -666.000000)">
+            <g id="光标" transform="translate(1086.000000, 666.000000)">
+                <g id="Oval-2">
+                    <use fill-opacity="0.499603714" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <circle stroke="#222222" stroke-width="1" cx="25" cy="25" r="9.5"></circle>
+                </g>
+                <rect id="Rectangle-7" fill="#222222" x="24.5" y="0" width="1" height="50"></rect>
+                <rect id="Rectangle-7" fill="#222222" x="0" y="24.5" width="50" height="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

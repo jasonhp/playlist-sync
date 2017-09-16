@@ -17,6 +17,7 @@ module.exports = {
   entry: {
     app: './src/main.js',
     background: './chrome/background/main.js',
+    '163': './chrome/content-scripts/163.js',
   },
   output: {
     path: config.build.assetsRoot,
