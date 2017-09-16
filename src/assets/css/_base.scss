@@ -1,0 +1,99 @@
+@import "variable";
+
+html,body,header,section,article,main,footer,p,div,h1,h2,h3,span,ul,li{
+  padding:0;
+  margin:0;
+}
+body{
+  -webkit-font-smoothing: antialiased;
+}
+li{
+  list-style: none;
+}
+img{
+  border: 0;
+}
+a{
+  text-decoration: none;
+  outline:none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+h3{
+  //font-size: 16px;
+  //font-weight:normal;
+  //height:44px;
+  //line-height:44px;
+  //box-sizing:border-box;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+body {
+  font-family: "PingFang SC", Source Sans Pro, "Hiragino Sans GB", "Helvetica Neue", Helvetica, "Microsoft Yahei", arial, sans-serif;
+  color: #333;
+}
+input, textarea{
+  font: inherit;
+  color: inherit;
+}
+
+.content-wrap{
+  width: 75%;
+  padding:10px;
+  .header{
+    position: relative;
+    font-weight:bold;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.input-text,.input-password,.input-img-code{
+  box-sizing: border-box;
+  padding-left: 40px;
+  border: 0;
+  border-bottom:1px solid #ccc;
+  width:100%;
+  height:34px;
+  padding-bottom: 4px;
+  line-height: 30px;
+  outline: none;
+  font-size:14px;
+  &:focus{
+    border-bottom: 2px solid $mainColor;
+  }
+}
+
+
+.input-button{
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: $mainColor;
+  border: 1px solid $mainColor;
+  width:100%;
+  height:40px;
+  outline: none;
+  font-size:14px;
+  cursor: pointer;
+  color: #fff;
+  &:hover{
+    background-color: #1B7CFA;
+    border-color: #1B7CFA;
+  }
+  &:active{
+    background-color: #1B7CFA;
+    border-color: #1B7CFA;
+  }
+  &.disable{
+    background-color:lighten($mainColor,20%);
+    border-color:lighten($mainColor,20%);
+  }
+}
+
