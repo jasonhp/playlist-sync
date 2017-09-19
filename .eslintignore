@@ -5,3 +5,5 @@ dist/
 third-party/
 
 node_modules/
+
+chrome/background/services/

@@ -1,39 +1,33 @@
-import CryptoJS from 'crypto-js'
+// 网易云音乐API调用加密
 
-function d(d, e, f, g) {
-  var h = {}
-    , i = a(16);
-  return h.encText = b(d, g),
-    h.encText = b(h.encText, i),
-    h.encSecKey = c(i, e, f),
-    h
-}
-function a(a) {
-  var d, e, b =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c =
-    "";
-  for (d = 0; a > d; d += 1)
-    e = Math.random() * b.length,
-      e = Math.floor(e),
-      c += b.charAt(e);
-  2
-  return c
-}
-function b(a, b) {
-  var c = CryptoJS.enc.Utf8.parse(b)
-    , d = CryptoJS.enc.Utf8.parse("0102030405060708")
-    , e = CryptoJS.enc.Utf8.parse(a)
-    , f = CryptoJS.AES.encrypt(e, c, {
-    iv: d,
-    mode: CryptoJS.mode.CBC
-  });
-  return f.toString()
-}
-function c(a, b, c) {
-  var d, e;
-  return setMaxDigits(131),
-    d = new RSAKeyPair(b,"",c),
-    3
-  e = encryptedString(d, a)
-}
+import $ from 'jquery';
+import encrypter from './encrypter';
+
+
+const getter = (oriParams) => {
+  const cryptedParams = encrypter(oriParams);
+  const serialize = (fM4Q, Jy4C, ctk6e) => {
+    if (!fM4Q)
+      return "";
+    const bs2x = [];
+    for (let x in fM4Q) {
+      bs2x.push(encodeURIComponent(x) + "=" + (!!ctk6e ? encodeURIComponent(fM4Q[x]) : fM4Q[x]))
+    }
+    return bs2x.join(Jy4C || ",")
+  };
+
+  const params = serialize({
+    params: cryptedParams.encText,
+    encSecKey: cryptedParams.encSecKey
+  }, "&", true);
+
+  console.log(params);
+  return $.ajax('http://music.163.com/weapi/v3/playlist/detail', {
+    type: 'POST',
+    data: params
+  })
+
+};
+
+export default getter
 

@@ -30,7 +30,8 @@
     },
     methods: {
       f_start() {
-        this.$router.push({name: 'step1'})
+        this.$router.push({name: 'step1'});
+        chrome.runtime.sendMessage({ operation: 'call163' })
       }
     }
   }
@@ -54,5 +55,6 @@
     text-align: center;
     line-height: 100px;
     color: #fff;
+    background-image: url(../assets/img/icons/icon-addlink.png);
   }
 </style>

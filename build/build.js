@@ -15,10 +15,14 @@ const spinner = ora('building for production...');
 spinner.start();
 const assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory);
 
+console.log('\ncopyingggg\n');
+console.log(path.join(assetsPath,'img'));
+
 rm(assetsPath, err => {
   if (err) throw err
   //开发插件的配置 TODO: 待优化
   webpack(webpackConfig, function (err, stats) {
+    mkdir(path.join(assetsPath,'img'));
     cp('-R','chrome/img/*', path.join(assetsPath,'img'));
     cp('-R','chrome/manifest.json', config.build.assetsRoot);
     cp('-R', 'static/*', assetsPath);

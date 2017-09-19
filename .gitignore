@@ -148,3 +148,5 @@ dist/
 Design/
 
 .DS_Store
+
+*.sketch
