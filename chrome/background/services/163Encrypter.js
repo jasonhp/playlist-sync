@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js';
 
+var maxDigits, ZERO_ARRAY, bigZero, bigOne, dpl10, lr10, hexatrigesimalToChar, hexToChar, highBitMasks, lowBitMasks, biRadixBase = 2, biRadixBits = 16, bitsPerDigit = biRadixBits, biRadix = 65536, biHalfRadix = biRadix >>> 1, biRadixSquared = biRadix * biRadix, maxDigitVal = biRadix - 1, maxInteger = 9999999999999998;
 // 定值，从网易云音乐 core.js 中获取
 const encryptParam = '0CoJUm6Qyw8W8jud';
 const keyParam1 = '010001';
@@ -31,13 +32,49 @@ function b(a, b) {
   });
   return f.toString()
 }
-// function c(a, b, c) {
-//   var d, e;
-//   return setMaxDigits(131),
-//     d = new RSAKeyPair(b,"",c),
-//     3
-//   e = encryptedString(d, a)
-// }
+function c(a, b, c) {
+  var d, e;
+  return setMaxDigits(131),
+    d = new RSAKeyPair(b,"",c),
+    3
+  e = encryptedString(d, a)
+}
+function encryptedString(a, b) {
+  for (var f, g, h, i, j, k, l, c = new Array, d = b.length, e = 0; d > e; )
+    c[e] = b.charCodeAt(e),
+      e++;
+  for (; 0 != c.length % a.chunkSize; )
+    c[e++] = 0;
+  for (f = c.length,
+         g = "",
+         e = 0; f > e; e += a.chunkSize) {
+    for (j = new BigInt,
+           h = 0,
+           i = e; i < e + a.chunkSize; ++h)
+      j.digits[h] = c[i++],
+        j.digits[h] += c[i++] << 8;
+    k = a.barrett.powMod(j, a.e),
+      l = 16 == a.radix ? biToHex(k) : biToString(k, a.radix),
+      g += l + " "
+  }
+  return g.substring(0, g.length - 1)
+}
+
+function BigInt(a) {
+  this.digits = "boolean" == typeof a && 1 == a ? null : ZERO_ARRAY.slice(0),
+    this.isNeg = !1
+}
+
+function setMaxDigits(a) {
+  maxDigits = a,
+    ZERO_ARRAY = new Array(maxDigits);
+  for (var b = 0; b < ZERO_ARRAY.length; b++)
+    ZERO_ARRAY[b] = 0;
+  bigZero = new BigInt,
+    bigOne = new BigInt,
+    bigOne.digits[0] = 1
+}
+
 
 function d(d, e, f, g) {
   var h = {}
@@ -87,6 +124,9 @@ const baW0x = function(cfn5s) {
 };
 
 const encrypter = (params) => {
+  console.log(params);
+  console.log(RSAKeyPair);
+  console.log(d(JSON.stringify(params), baW0x(strangeParam1), baW0x(strangeParam), baW0x(strangeParam2)));
   return d(JSON.stringify(params), baW0x(strangeParam1), baW0x(strangeParam), baW0x(strangeParam2))
 };
 

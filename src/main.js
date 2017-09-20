@@ -20,7 +20,7 @@ const router = new VueRouter({
     {
       path: '/',
       redirect: {
-        name: 'step1',
+        name: 'main',
       },
     },
     {

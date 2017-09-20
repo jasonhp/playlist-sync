@@ -1,7 +1,7 @@
 // 网易云音乐API调用加密
 
 import $ from 'jquery';
-import encrypter from './encrypter';
+import encrypter from './163Encrypter';
 
 
 const getter = (oriParams) => {
