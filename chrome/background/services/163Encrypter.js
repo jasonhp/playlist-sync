@@ -36,8 +36,7 @@ function c(a, b, c) {
   var d, e;
   return setMaxDigits(131),
     d = new RSAKeyPair(b,"",c),
-    3
-  e = encryptedString(d, a)
+    e = encryptedString(d, a)
 }
 function encryptedString(a, b) {
   for (var f, g, h, i, j, k, l, c = new Array, d = b.length, e = 0; d > e; )
@@ -81,7 +80,7 @@ function d(d, e, f, g) {
     , i = a(16);
   return h.encText = b(d, g),
     h.encText = b(h.encText, i),
-    h.encSecKey = c(i, e, f),
+    h.encSecKey = '4f4d6b95b4fe458369fef66bafb52cf89a2e8050f7aa6d75c267b0dd094d557bd3c9ec761de387c33589c652e2c8bc69c4f19cea055521c922ac4e3e77c5df4f6435fc63d94e2f06feed9ea966524192db3c517ff2eda1f56de4aef7af3ead8f08ad5b96a13a756bde37e42047e999dc6d7f4f93335dfbc220ac9bc64eb140eb',
     h
 }
 

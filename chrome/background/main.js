@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     "from the extension");
   if (request.operation === "call163") {
     const testParams = {
-      csrf_token : "ce61bacf0931da9b71d99e8862c4d16c",
+      csrf_token : "fca0a1b6cc9612aad75cdaabbf127f14",
       id : "4494380923",
       limit : "1000",
       n: "1000",

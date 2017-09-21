@@ -7,7 +7,8 @@
 <body>
 <!--<script src="node_modules/crypto-js/enc-utf8.js"></script>-->
 <!--<script src="node_modules/crypto-js/aes.js"></script>-->
-<!--<script src="node_modules/crypto-js/crypto-js.js"></script>-->
+<script src="node_modules/crypto-js/crypto-js.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="static/js/bigInt.js"></script>
 <script src="static/js/barret.js"></script>
 <script src="static/js/rsa.js"></script>
@@ -47,10 +48,11 @@
   }
   function c(a, b, c) {
     var d, e;
+    console.log(setMaxDigits(131));
+    console.log(new RSAKeyPair(b,"",c))
     return setMaxDigits(131),
       d = new RSAKeyPair(b,"",c),
-      3
-    e = encryptedString(d, a)
+      e = encryptedString(d, a)
   }
   function encryptedString(a, b) {
     for (var f, g, h, i, j, k, l, c = new Array, d = b.length, e = 0; d > e; )
@@ -137,9 +139,6 @@
   };
 
   const encrypter = (params) => {
-    console.log(params);
-    console.log(RSAKeyPair);
-    console.log(d(JSON.stringify(params), baW0x(strangeParam1), baW0x(strangeParam), baW0x(strangeParam2)));
     return d(JSON.stringify(params), baW0x(strangeParam1), baW0x(strangeParam), baW0x(strangeParam2))
   };
 
