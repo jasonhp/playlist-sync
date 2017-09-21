@@ -15,7 +15,7 @@
     "128": "static/img/icon128.png"
   },
   "background": {
-    "scripts": ["./static/js/manifest.js", "./static/js/vendor.js", "./static/js/bigInt.js", "./static/js/barret.js", "./static/js/rsa.js", "./static/js/eventPage.js"],
+    "scripts": ["./static/js/manifest.js", "./static/js/vendor.js", "./static/js/eventPage.js"],
     "persistent": true
   },
   "browser_action": {

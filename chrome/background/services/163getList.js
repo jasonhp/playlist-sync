@@ -22,7 +22,7 @@ const getter = (oriParams) => {
   }, "&", true);
 
   console.log(params);
-  return $.ajax('http://music.163.com/weapi/v3/playlist/detail', {
+  return $.ajax('http://music.163.com/weapi/v3/playlist/detail?csrf_token=fca0a1b6cc9612aad75cdaabbf127f14', {
     type: 'POST',
     data: params
   })

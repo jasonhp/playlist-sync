@@ -1,10 +1,12 @@
 import CryptoJS from 'crypto-js';
+import RSAKeyPair from './test-rsa'
 
-var maxDigits, ZERO_ARRAY, bigZero, bigOne, dpl10, lr10, hexatrigesimalToChar, hexToChar, highBitMasks, lowBitMasks, biRadixBase = 2, biRadixBits = 16, bitsPerDigit = biRadixBits, biRadix = 65536, biHalfRadix = biRadix >>> 1, biRadixSquared = biRadix * biRadix, maxDigitVal = biRadix - 1, maxInteger = 9999999999999998;
+var biRadixBits = 16, bitsPerDigit = biRadixBits, biRadix = 65536, biHalfRadix = biRadix >>> 1, biRadixSquared = biRadix * biRadix, maxDigitVal = biRadix - 1, maxInteger = 9999999999999998;
 // 定值，从网易云音乐 core.js 中获取
 const encryptParam = '0CoJUm6Qyw8W8jud';
 const keyParam1 = '010001';
 const keyParam2 = '00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7';
+const key = '9eb56913cc311acb3232c4425975e6b16618a8622cf2d718a7c30c92299cc73d66bfa55bff7b95e047caa49efc36326d8598ea97e337538f45778b65d09c6c474954a1f32a84e512fdf331bd91c3e011bc8eeeb6f761aea6b1a707b129493d4cf3f2c4ed9b7c05ff8ba5f2303ccc3cc1260fe243c563cb1523ebd0f5be94e896'
 
 const strangeParam = ["色", "流感", "这边", "弱", "嘴唇", "亲", "开心", "呲牙", "憨笑", "猫", "皱眉", "幽灵", "蛋糕", "发怒", "大哭", "兔子", "星星", "钟情", "牵手", "公鸡", "爱意", "禁止", "狗", "亲亲", "叉", "礼物", "晕", "呆", "生病", "钻石", "拜", "怒", "示爱", "汗", "小鸡", "痛苦", "撇嘴", "惶恐", "口罩", "吐舌", "心碎", "生气", "可爱", "鬼脸", "跳舞", "男孩", "奸笑", "猪", "圈", "便便", "外星", "圣诞"]
 const strangeParam1 = ["流泪", "强"];
@@ -19,7 +21,6 @@ function a(a) {
     e = Math.random() * b.length,
       e = Math.floor(e),
       c += b.charAt(e);
-  2
   return c
 }
 function b(a, b) {
@@ -32,57 +33,26 @@ function b(a, b) {
   });
   return f.toString()
 }
-function c(a, b, c) {
-  var d, e;
-  return setMaxDigits(131),
-    d = new RSAKeyPair(b,"",c),
-    e = encryptedString(d, a)
-}
-function encryptedString(a, b) {
-  for (var f, g, h, i, j, k, l, c = new Array, d = b.length, e = 0; d > e; )
-    c[e] = b.charCodeAt(e),
-      e++;
-  for (; 0 != c.length % a.chunkSize; )
-    c[e++] = 0;
-  for (f = c.length,
-         g = "",
-         e = 0; f > e; e += a.chunkSize) {
-    for (j = new BigInt,
-           h = 0,
-           i = e; i < e + a.chunkSize; ++h)
-      j.digits[h] = c[i++],
-        j.digits[h] += c[i++] << 8;
-    k = a.barrett.powMod(j, a.e),
-      l = 16 == a.radix ? biToHex(k) : biToString(k, a.radix),
-      g += l + " "
-  }
-  return g.substring(0, g.length - 1)
-}
-
-function BigInt(a) {
-  this.digits = "boolean" == typeof a && 1 == a ? null : ZERO_ARRAY.slice(0),
-    this.isNeg = !1
-}
-
-function setMaxDigits(a) {
-  maxDigits = a,
-    ZERO_ARRAY = new Array(maxDigits);
-  for (var b = 0; b < ZERO_ARRAY.length; b++)
-    ZERO_ARRAY[b] = 0;
-  bigZero = new BigInt,
-    bigOne = new BigInt,
-    bigOne.digits[0] = 1
-}
-
+// function c(a, b, c) {
+//   var d, e;
+//   setMaxDigits(131);
+//   console.log('generating rsa')
+//   d = new RSAKeyPair(b,"",c);
+//   console.log('generating str')
+//   e = encryptedString(d, a);
+//   return e
+// }
 
 function d(d, e, f, g) {
   var h = {}
     , i = a(16);
   return h.encText = b(d, g),
     h.encText = b(h.encText, i),
-    h.encSecKey = '4f4d6b95b4fe458369fef66bafb52cf89a2e8050f7aa6d75c267b0dd094d557bd3c9ec761de387c33589c652e2c8bc69c4f19cea055521c922ac4e3e77c5df4f6435fc63d94e2f06feed9ea966524192db3c517ff2eda1f56de4aef7af3ead8f08ad5b96a13a756bde37e42047e999dc6d7f4f93335dfbc220ac9bc64eb140eb',
+    h.encSecKey = RSAKeyPair(i, e, f),
+    // h.encSecKey = key,
     h
 }
+
 
 const BO2x = function(j2x, t2x) {
   try {
