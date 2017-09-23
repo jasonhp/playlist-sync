@@ -1,5 +1,5 @@
 import CryptoJS from 'crypto-js';
-import RSAKeyPair from './test-rsa'
+import RSAKeyPair from './rsa';
 
 var biRadixBits = 16, bitsPerDigit = biRadixBits, biRadix = 65536, biHalfRadix = biRadix >>> 1, biRadixSquared = biRadix * biRadix, maxDigitVal = biRadix - 1, maxInteger = 9999999999999998;
 // 定值，从网易云音乐 core.js 中获取
@@ -61,7 +61,7 @@ const BO2x = function(j2x, t2x) {
       return t2x == "null";
     if (j2x === undefined)
       return t2x == "undefined";
-    return Object.toString.call(j2x).toLowerCase() == "[object " + t2x + "]"
+    return Object.prototype.toString.call(j2x).toLowerCase() == "[object " + t2x + "]"
   } catch (e) {
     return !1
   }
@@ -94,8 +94,6 @@ const baW0x = function(cfn5s) {
 
 const encrypter = (params) => {
   console.log(params);
-  console.log(RSAKeyPair);
-  console.log(d(JSON.stringify(params), baW0x(strangeParam1), baW0x(strangeParam), baW0x(strangeParam2)));
   return d(JSON.stringify(params), baW0x(strangeParam1), baW0x(strangeParam), baW0x(strangeParam2))
 };
 

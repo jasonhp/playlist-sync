@@ -7,23 +7,12 @@
 
 <script>
   import Constants from '../constants'
-  import Account from './Account.vue'
 
   export default {
     data() {
       return {
-        accounts: [
-          {
-            name: '111',
-          },
-          {
-            name: '222',
-          }
-        ]
+
       }
-    },
-    components: {
-      Account
     },
     mounted: function(){
 

@@ -33,10 +33,7 @@
 
 <style lang="scss" type="text/scss">
   @import "assets/css/base";
-  $linkColor: #1E7BE2;
-  a{
-    color: $linkColor;
-  }
+
   #app {
     position: relative;
     margin: 0 auto;

@@ -3,9 +3,6 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
 import App from './App.vue'
-import Main from './components/Main.vue'
-import Step1 from './components/Step1.vue'
-import ChoosePlat from './components/ChoosePlat.vue'
 import config from './config'
 
 window.version = config.version;
@@ -22,17 +19,7 @@ const router = new VueRouter({
       redirect: {
         name: 'main',
       },
-    },
-    {
-      name: 'main',
-      path: '/main',
-      component: Main,
-    },
-    {
-      name: 'step1',
-      path: '/step1',
-      component: Step1,
-    },
+    }
   ]
 });
 
