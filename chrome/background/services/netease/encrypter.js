@@ -1,3 +1,5 @@
+// 网易云音乐API调用加密
+
 import CryptoJS from 'crypto-js';
 import RSAKeyPair from './rsa';
 

@@ -23,8 +23,7 @@
       "19": "static/img/icon19.png",
       "38": "static/img/icon38.png"
     },
-    "default_title": "playlist-sync",
-    "default_popup": "index.html"
+    "default_title": "playlist-sync"
   },
   "permissions": [
     "cookies",
