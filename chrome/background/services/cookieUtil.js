@@ -9,9 +9,7 @@ const getSingleCookie = (details) => {
 };
 
 const util = {
-  async getCookie(details){
-    return await getSingleCookie(details);
-  }
+  getCookie: getSingleCookie,
 };
 
 export default util;

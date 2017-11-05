@@ -2,6 +2,7 @@
 import CONSTANTS from '../../src/constants';
 import getNetEaseToken from './services/netease/getToken';
 import netEaseRequest from './services/netease/request';
+import getNetEaseUid from './services/netease/getUserId';
 
 
 chrome.browserAction.onClicked.addListener(() => {
@@ -12,7 +13,7 @@ let netEaseUserInfo = {
   uid: '',
   token: ''
 };
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
   console.log(sender.tab ?
     "from a content script:" + sender.tab.url :
     "from the extension");
@@ -20,8 +21,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case CONSTANTS.MSGS.GET_DETAILS:
       switch (request.platform) {
         case CONSTANTS.PLATS.NETEASE:
-          if (netEaseUserInfo.token.length === 0) {
-            netEaseUserInfo.token = getNetEaseToken()
+          const tokenCookie = await getNetEaseToken();
+          console.log(tokenCookie);
+          netEaseUserInfo.token = tokenCookie.value;
+
+          if (netEaseUserInfo.uid.length === 0) {
+            netEaseUserInfo.uid = await getNetEaseUid();
           }
           const postParams = {
             csrf_token : netEaseUserInfo.token,
@@ -44,12 +49,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case CONSTANTS.MSGS.GET_LISTS:
       switch (request.platform) {
         case CONSTANTS.PLATS.NETEASE:
-          if (netEaseUserInfo.token.length === 0) {
-            netEaseUserInfo.token = getNetEaseToken()
+          const tokenCookie = await getNetEaseToken();
+          netEaseUserInfo.token = tokenCookie.value;
+
+          if (netEaseUserInfo.uid.length === 0) {
+            netEaseUserInfo.uid = await getNetEaseUid().catch((err) => {
+              console.log(err);
+            });
           }
           const postParams = {
+            csrf_token : netEaseUserInfo.token,
             uid : netEaseUserInfo.uid,
-            limit : "1000",
+            limit : "1001",
             offset: "0",
           };
           netEaseRequest(`${CONSTANTS.URLS.PLAYLISTS_163}?csrf_token=${netEaseUserInfo.token}`, postParams)

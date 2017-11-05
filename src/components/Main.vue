@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import Constants from '../constants'
+  import CONSTANTS from '../constants'
 
   export default {
     data() {
@@ -19,8 +19,12 @@
     },
     methods: {
       f_start() {
-        this.$router.push({name: 'step1'});
-        chrome.runtime.sendMessage({ operation: 'call163' })
+//        this.$router.push({name: 'step1'});
+        chrome.runtime.sendMessage({
+          operation: CONSTANTS.MSGS.GET_DETAILS,
+          platform: CONSTANTS.PLATS.NETEASE,
+          playListId: '953168127'
+        })
       }
     }
   }

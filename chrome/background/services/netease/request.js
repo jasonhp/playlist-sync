@@ -2,15 +2,15 @@ import $ from 'jquery';
 import postDataGen from './postDataGenerator';
 
 const request = (url, params) => {
-  const params = postDataGen(params)
+  const postData = postDataGen(params);
 
-  console.log(params);
+  console.log(postData);
   return $.ajax(url, {
     type: 'POST',
-    data: params,
+    data: postData,
+    dataType: 'json',
   })
 
 };
 
 export default request
-
