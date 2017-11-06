@@ -1,7 +1,8 @@
 <template>
   <div class="page main">
     <!-- main view -->
-    <span class="start-btn" @click="f_start">开始</span>
+    <span class="start-btn" @click="f1">163歌单</span>
+    <span class="start-btn" @click="f2">163歌单内容</span>
   </div>
 </template>
 
@@ -18,8 +19,13 @@
 
     },
     methods: {
-      f_start() {
-//        this.$router.push({name: 'step1'});
+      f1() {
+        chrome.runtime.sendMessage({
+          operation: CONSTANTS.MSGS.GET_LISTS,
+          platform: CONSTANTS.PLATS.NETEASE,
+        })
+      },
+      f2() {
         chrome.runtime.sendMessage({
           operation: CONSTANTS.MSGS.GET_DETAILS,
           platform: CONSTANTS.PLATS.NETEASE,
